@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe User do
   let(:nickname) { 'testuser' }
-  let(:email) {'test@aaa.test'}
+  let(:email) { 'test@aaa.test' }
   let(:password) { 'testtest' }
-  let(:user) {User.new(nickname: nickname, email: email, password: password, password_confirmation: password)}
+  let(:user) { User.new(nickname: nickname, email: email, password: password, password_confirmation: password) }
 
   describe '.first' do
     before do
