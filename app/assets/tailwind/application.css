@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+/* ビューで使うクラスを検出するため app/views をスキャン */
+@source "./app/views/**/*.erb";
+@source "./app/components/**/*.erb";

@@ -35,6 +35,9 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+# watchman スタブ（Docker 内で tailwindcss:watch が "watchman: not found" を出さないようにする）
+RUN printf '#!/bin/sh\nexit 0\n' > /usr/local/bin/watchman && chmod +x /usr/local/bin/watchman
+
 # Install application gems
 COPY vendor/* ./vendor/
 COPY Gemfile Gemfile.lock ./

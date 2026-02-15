@@ -113,7 +113,10 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
+    ffi (1.17.3)
     ffi (1.17.3-aarch64-linux-gnu)
+    foreman (0.90.0)
+      thor (~> 1.4)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
@@ -166,6 +169,7 @@ GEM
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
+    mini_portile2 (2.8.9)
     minitest (6.0.1)
       prism (~> 1.5)
     msgpack (1.8.0)
@@ -184,6 +188,9 @@ GEM
       net-protocol
     net-ssh (7.3.0)
     nio4r (2.7.5)
+    nokogiri (1.19.0)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     nokogiri (1.19.0-aarch64-linux-gnu)
       racc (~> 1.4)
     ostruct (0.6.3)
@@ -191,6 +198,7 @@ GEM
     parser (3.3.10.1)
       ast (~> 2.4.1)
       racc
+    pg (1.6.3)
     pg (1.6.3-aarch64-linux)
     pp (0.6.3)
       prettyprint
@@ -325,8 +333,10 @@ GEM
     tailwindcss-rails (4.4.0)
       railties (>= 7.0.0)
       tailwindcss-ruby (~> 4.0)
+    tailwindcss-ruby (4.1.18)
     tailwindcss-ruby (4.1.18-aarch64-linux-gnu)
     thor (1.5.0)
+    thruster (0.1.18)
     thruster (0.1.18-aarch64-linux)
     timeout (0.6.0)
     tsort (0.2.0)
@@ -364,6 +374,7 @@ DEPENDENCIES
   bundler-audit
   capybara
   debug
+  foreman
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
