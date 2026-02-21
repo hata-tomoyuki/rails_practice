@@ -9,6 +9,7 @@ describe User do
   describe '.first' do
     before do
       @user = create(:user, nickname: nickname, email: email)
+      @post  = create(:post, title: 'タイトル', content: '本文', user_id: @user.id)
     end
 
     subject { User.find(@user.id) }
@@ -16,6 +17,13 @@ describe User do
     it '事前に作成した通りのユーザーが取得できること' do
       expect(subject.nickname).to eq('testuser')
       expect(subject.email).to eq(@user.email)
+    end
+
+    it 'ユーザーが持つ投稿が取得できること' do
+      expect(subject.posts.size).to eq(1)
+      expect(subject.posts.first.title).to eq('タイトル')
+      expect(subject.posts.first.content).to eq('本文')
+      expect(subject.posts.first.user_id).to eq(@user.id)
     end
   end
 
