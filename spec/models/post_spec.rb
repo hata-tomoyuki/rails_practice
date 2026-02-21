@@ -58,9 +58,9 @@ describe Post do
   end
 
   describe 'Postが持つ情報の検証' do
-    before { create(:post, title: title, content: content, user_id: user_id) } # Post を作成
+    before { @post = create(:post, title: title, content: content, user_id: user_id) } # Post を作成
 
-    subject { described_class.first }
+    subject { Post.find(@post.id) }
 
     it 'Postの属性値を返す' do
       expect(subject.title).to eq('テストタイトル')
