@@ -2,20 +2,20 @@ require 'rails_helper'
 
 describe User do
   let(:nickname) { 'testuser' }
-  let(:email) { 'test@aaa.test' }
+  let(:email) { "test_#{SecureRandom.hex(4)}@aaa.test" }
   let(:password) { 'testtest' }
   let(:user) { User.new(nickname: nickname, email: email, password: password, password_confirmation: password) }
 
   describe '.first' do
     before do
-      create(:user, nickname: nickname, email: email)
+      @user = create(:user, nickname: nickname, email: email)
     end
 
-    subject { described_class.first }
+    subject { User.find(@user.id) }
 
     it '事前に作成した通りのユーザーが取得できること' do
       expect(subject.nickname).to eq('testuser')
-      expect(subject.email).to eq('test@aaa.test')
+      expect(subject.email).to eq(@user.email)
     end
   end
 
@@ -35,7 +35,7 @@ describe User do
 
           it '無効であること' do
             expect(user.valid?).to be(false)
-            expect(user.errors[:nickname]).to include('is too long (maximum is 20 characters)')
+            expect(user.errors[:nickname]).to include('は20文字以下に設定して下さい。')
           end
         end
       end
@@ -46,7 +46,7 @@ describe User do
 
           it '無効であること' do
             expect(user.valid?).to be(false)
-            expect(user.errors[:nickname]).to include("can't be blank")
+            expect(user.errors[:nickname]).to include("が入力されていません。")
           end
         end
       end
