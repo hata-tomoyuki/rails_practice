@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find_by(id: params[:id]) # URLの:id部分をもとにPostを検索してインスタンス変数に代入
   end
 
   def destroy
