@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create] # ログインしているかどうかを判断
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
 
   def index
     @posts = Post.limit(10).order(created_at: :desc) # 全ての投稿を新しい順で取得してインスタンス変数に代入
@@ -27,6 +27,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    post = Post.find_by(id: params[:id])
+    if post && post.user_id == current_user.id
+      post.destroy
+      flash[:notice] = '投稿を削除しました'
+      redirect_to posts_path
+    else
+      flash[:alert] = '投稿の削除に失敗しました'
+      redirect_to posts_path
+    end
   end
 
   private
